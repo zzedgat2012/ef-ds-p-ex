@@ -1,0 +1,52 @@
+{
+  "name": "edgar-ferreira/theme",
+  "type": "wordpress-theme",
+  "license": "MIT",
+  "description": "Theme for edgar-ferreira.com, built on Sage 11 and Acorn",
+  "homepage": "https://edgar-ferreira.com",
+  "authors": [
+    {
+      "name": "Edgar Ferreira",
+      "email": "efsn88@gmail.com"
+    }
+  ],
+  "keywords": [
+    "wordpress",
+    "sage",
+    "acorn"
+  ],
+  "support": {
+    "issues": "https://gitlab.com/efsn88/edgar-ferreira.com/-/issues"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  },
+  "require": {
+    "php": ">=8.3",
+    "mpdf/mpdf": "^8.2",
+    "roots/acorn": "^6.0"
+  },
+  "require-dev": {
+    "laravel/pint": "^1.20"
+  },
+  "suggest": {
+    "log1x/sage-directives": "A collection of useful Blade directives for WordPress and Sage (^1.0)."
+  },
+  "extra": {
+    "installer-name": "edgar-ferreira"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "scripts": {
+    "post-autoload-dump": [
+      "Roots\\Acorn\\ComposerScripts::postAutoloadDump"
+    ]
+  }
+}
