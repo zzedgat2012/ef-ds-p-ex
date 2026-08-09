@@ -25,8 +25,12 @@ class ImportContent
      *
      * ## OPTIONS
      *
-     * [--path=<path>]
+     * [--source=<path>]
      * : Path to the React app. Defaults to base/ in the project root.
+     *   Deliberately not --path: that is a WP-CLI global option naming the
+     *   WordPress installation, and a command-level --path is swallowed by it.
+     *   The symptom is "'portfolio' is not a registered wp command", because
+     *   WP-CLI went looking for WordPress at the content directory.
      *
      * [--locale=<locale>]
      * : Which content locale to import. Default: en
@@ -42,13 +46,13 @@ class ImportContent
      * ## EXAMPLES
      *
      *     wp portfolio import
-     *     wp portfolio import --path=/var/www/html/base --skip-media
+     *     wp portfolio import --source=/var/www/html/base --skip-media
      *
      * @when after_wp_load
      */
     public function __invoke(array $args, array $assoc): void
     {
-        $base = rtrim($assoc['path'] ?? \dirname(ABSPATH, 2).'/base', '/');
+        $base = rtrim($assoc['source'] ?? \dirname(ABSPATH, 2).'/base', '/');
         $locale = $assoc['locale'] ?? 'en';
         $skipMedia = isset($assoc['skip-media']);
 
